@@ -1,4 +1,4 @@
-@(userForm: Form[models.users.User],user: models.users.User)
+@(userForm: Form[models.users.UserPassword2],user: models.users.User)
 
 @import helper._
 
@@ -31,7 +31,7 @@
             @inputText(userForm("name"), '_label -> "Name", 'class -> "form-control")
             @inputText(userForm("password"), '_label -> "Password", 'class -> "form-control")
             @inputText(userForm("password2"), '_label -> "Confirm Password", 'class -> "form-control")
-            @userForm("role").valueOr("customer"))
+            @inputText(userForm("role"),'_label -> "", 'hidden -> "hidden")
             @inputText(userForm("email"), '_label -> "", 'hidden -> "hidden")
             
             <!-- We use the bootstrap actions class for the buttons at the bottom:
