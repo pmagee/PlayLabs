@@ -1,5 +1,5 @@
-@(items: List[models.ItemOnSale],categories: List[models.Category])
-@main("On Sale"){
+@(items: List[models.ItemOnSale],categories: List[models.Category],user: models.users.User)
+@main("On Sale",user){
     <h1>On sale here</h1>
 
 
