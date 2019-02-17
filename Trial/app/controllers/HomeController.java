@@ -129,13 +129,52 @@ public Result updateItem(Long id) {
     // Display the "add item" page, to allow the user to update the item
     return ok(addItem.render(itemForm,User.getUserById(session().get("email"))));
 }
+
+
+
+public Result users() {
+    List<User> userList = null;
+
+    userList = User.findAll();
+
+    return ok(users.render(userList,User.getUserById(session().get("email"))));
+
+}
+@Security.Authenticated(Secured.class)
+@Transactional
+public Result addUserSubmit() {
+
+Form<User> newUserForm = formFactory.form(User.class).bindFromRequest();
+
+if (newUserForm.hasErrors()) {
+    
+    return badRequest(addUser.render(newUserForm,User.getUserById(session().get("email"))));
+} else {
+    
+    User newUser = newUserForm.get();
+   
+    
+    if(User.getUserById(newUser.getEmail())==null){
+        newUser.save();
+    }else{
+        newUser.update();
+    }
+    
+    flash("success", "User " + newUser.getName() + " was added/updated.");
+   
+    return redirect(controllers.routes.HomeController.users()); 
+    }
+}
 @Security.Authenticated(Secured.class)
 @Transactional
 @With(AuthAdmin.class)
 public Result deleteUser(String email) {
 
+
+
         User u = User.getUserById(email);
         u.delete();
+
 
     flash("success", "User has been deleted.");
 
@@ -147,17 +186,17 @@ public Result updateUser(String email) {
     Form<User> userForm;
 
     try {
- 
+        // Find the item by email
         u = User.getUserById(email);
         u.update();
 
-
+        // Populate the form object with data from the user found in the database
         userForm = formFactory.form(User.class).fill(u);
     } catch (Exception ex) {
         return badRequest("error");
     }
 
-
+    // Display the "add item" page, to allow the user to update the item
     return ok(addUser.render(userForm,User.getUserById(session().get("email"))));
 }
 
@@ -166,39 +205,5 @@ public Result addUser() {
     Form<User> userForm = formFactory.form(User.class);
     return ok(addUser.render(userForm,User.getUserById(session().get("email"))));
 }
-@Security.Authenticated(Secured.class)
-@Transactional
-public Result addUserSubmit() {
-
-Form<User> newUserForm = formFactory.form(User.class).bindFromRequest();
-
-if (newUserForm.hasErrors()) {
-
-    return badRequest(addUser.render(newUserForm,User.getUserById(session().get("email"))));
-} else {
-
-    User newUser = newUserForm.get();
-
-    
-    if(User.getUserById(newUser.getEmail())==null){
-        newUser.save();
-    }else{
-        newUser.update();
-    }
-
-    flash("success", "User " + newUser.getName() + " was added/updated.");
-
-    return redirect(controllers.routes.HomeController.users()); 
-    }
-}
-
-public Result users() {
-    List<User> userList = null;
-
-    userList = User.findAll();
-
-    return ok(users.render(userList,User.getUserById(session().get("email"))));
-
- }
 
 }
