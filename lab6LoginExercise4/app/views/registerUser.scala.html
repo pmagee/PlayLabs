@@ -31,7 +31,8 @@
             @inputText(userForm("name"), '_label -> "Name", 'class -> "form-control")
             @inputText(userForm("password"), '_label -> "Password", 'class -> "form-control")
             @inputText(userForm("password2"), '_label -> "Confirm Password", 'class -> "form-control")
-            @inputText(userForm("role"),'_label -> "", 'hidden -> "hidden")
+            
+            @inputText(userForm("role").copy(value=Some("customer")), '_label -> "",'hidden -> "hidden")
             @inputText(userForm("email"), '_label -> "", 'hidden -> "hidden")
             
             <!-- We use the bootstrap actions class for the buttons at the bottom:

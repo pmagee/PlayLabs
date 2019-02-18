@@ -22,7 +22,7 @@ GET     /addUser                    controllers.HomeController.addUser
 POST    /addUserSubmit              controllers.HomeController.addUserSubmit
 
 GET     /registerUser               controllers.LoginController.registerUser
-POST    /registerUserSubmit         controllers.LoginController.registerUserSubmit
+POST    /registerUserSubmit         controllers.LoginController.registerUserSubmit()
 
 GET     /deleteUser/:id             controllers.HomeController.deleteUser(id: String)
 GET     /updateUser/:id             controllers.HomeController.updateUser(id: String)
