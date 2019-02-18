@@ -72,13 +72,12 @@ public Result registerUserSubmit() {
 
         User  newUser = newUserForm.get();
         UserPassword2 newUser2 = newUserForm2.get();
-        System.out.println(newUser2.getPassword());
-        System.out.println(newUser2.getPassword2());
 
 
         if(!newUser2.getPassword2().equals(newUser2.getPassword())){
             flash("error", "Passwords must match "); 
-            return badRequest(registerUser.render(newUserForm2,User.getUserById(session().get("email"))));
+            return redirect(controllers.routes.LoginController.registerUser());
+            
         } 
     
         if(User.getUserById(newUser.getEmail())==null){
