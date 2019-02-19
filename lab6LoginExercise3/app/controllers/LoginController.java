@@ -60,41 +60,18 @@ public Result registerUser() {
 }
 
 public Result registerUserSubmit() {
-// We use the method bindFromRequest() to populate our Form<ItemOnSale> object with the
-// data that the user submitted. Thanks to Play Framework, we do not need to do the messy
-// work of parsing the request and extracting data from it characte by character.
-Form<User> newUserForm = formFactory.form(User.class).bindFromRequest();
-// We check for errors (based on constraints set in ItemOnSale class)
-if (newUserForm.hasErrors()) {
-    // If the form data have errors, we call the method badRequest(), requesting Play 
-    // Framework to send an error response to the user and display the additem page again. 
-    // As we are passing in newItemForm, the form will be populated with the data that the 
-    // user has already entered, saving them from having to enter it all over again.
-    return badRequest(addUser.render(newUserForm,User.getUserById(session().get("email"))));
-} else {
-    // If no errors are found in the form data, we extract the data from the form.
-    // Form objects have handy utility methods, such as the get() method we are using 
-    // here to extract the data into an ItemOnSale object. This is possible because
-    // we defined the form in terms of the model class ItemOnSale.
-    User newUser = newUserForm.get();
-    // Now we call the ORM method save() on the model object, to have it saved in the
-    // database as a line in the table item_on_sale.
-    System.out.println("Name" +newUser.getName());
-    System.out.println("Role" +newUser.getRole());
+    Form<User> newUserForm = formFactory.form(User.class).bindFromRequest();
+    if (newUserForm.hasErrors()) {
+        return badRequest(registerUser.render(newUserForm,User.getUserById(session().get("email"))));
+    } else {
+        User newUser = newUserForm.get();
 
-    if(User.getUserById(newUser.getEmail())==null){
-        newUser.save();
-    }else{
-        newUser.update();
+        if(User.getUserById(newUser.getEmail())==null){
+            newUser.save();
+        }else{
+            newUser.update();
     }
-    // We use the flash scope to specify that we want a success message superimposed on
-    // the next displayed page. The flash scope uses cookies, which we can read and set
-    // using the flash() function of the Play Framework. The flash scope cookies last
-    // for a single request (unlike session cookies, which we will use for log-in in a
-    // future lab). So, add a success message to the flash scope.
     flash("success", "User " + newUser.getName() + " was added/updated.");
-    // Having specified we want a message at the top, we can redirect to the onsale page,
-    // which will have to be modified to read the flash scope and display it.
     return redirect(controllers.routes.LoginController.login()); 
     }
 }
