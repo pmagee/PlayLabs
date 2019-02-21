@@ -187,10 +187,6 @@ if (newUserForm.hasErrors()) {
     return badRequest(addCustomer.render(newUserForm,User.getUserById(session().get("email"))));
 } else {
     Customer newUser = newUserForm.get();
-    System.out.println("Name: "+newUserForm.field("name").getValue().get());
-    System.out.println("Email: "+newUserForm.field("email").getValue().get());
-    System.out.println("Password: "+newUserForm.field("password").getValue().get());
-    System.out.println("Role: "+newUserForm.field("role").getValue().get());
     
     if(User.getUserById(newUser.getEmail())==null){
         newUser.save();

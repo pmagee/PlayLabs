@@ -31,9 +31,6 @@ public class User extends Model {
 
     public static final Finder<Long, User> find = new Finder<>(User.class);
 
-    // public static final List<User> findAll() {
-    //     return User.find.all();
-    // }
 
     public static User authenticate(String email, String password) {
         return find.query().where().eq("email", email).eq("password", password).findUnique();
@@ -45,16 +42,6 @@ public class User extends Model {
             return find.query().where().eq("email", id).findUnique();
         }
     }
-
-    // public static Map<String,String> options() {
-    //     LinkedHashMap<String,String> options = new LinkedHashMap<>();
-     
-    //     // Get all the categories from the database and add them to the options hash map
-    //     for (User u: User.findAll()) {
-    //        options.put(u.getEmail(), u.getRole());
-    //     }
-    //     return options;
-    //  }
 
     public User() {
 

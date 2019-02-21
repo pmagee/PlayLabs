@@ -10,7 +10,6 @@ import play.data.validation.*;
 
 
 @Table(name = "user")
-// This is a Customer of type admin
 @DiscriminatorValue("c")
 
 // Customer inherits from the User class
