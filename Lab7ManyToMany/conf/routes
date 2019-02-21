@@ -1,0 +1,50 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# An example controller showing a sample home page
+GET     /                           controllers.HomeController.index
+
+GET     /onsale                     controllers.HomeController.onsale(cat:Long?=0L)
+GET     /about                      controllers.HomeController.about
+
+
+GET     /addItem                    controllers.HomeController.addItem
+GET     /updateItem/:id             controllers.HomeController.updateItem(id: Long)
+GET     /deleteItem/:id             controllers.HomeController.deleteItem(id: Long)
+
+POST    /addItemSubmit              controllers.HomeController.addItemSubmit
+
+GET     /deleteCustomer/:id         controllers.HomeController.deleteCustomer(id: String)
+GET     /deleteAdmin/:id            controllers.HomeController.deleteAdmin(id: String)
+
+GET     /updateCustomer/:id         controllers.HomeController.updateCustomer(id: String)
+GET     /updateAdmin/:id            controllers.HomeController.updateAdmin(id: String)
+
+GET     /admin                      controllers.HomeController.usersAdmin
+GET     /customers                  controllers.HomeController.usersCustomer
+
+
+GET     /addAdmin                   controllers.HomeController.addAdmin
+POST    /addAdminSubmit             controllers.HomeController.addAdminSubmit
+
+GET     /addCustomer                controllers.HomeController.addCustomer
+POST    /addCustomerSubmit          controllers.HomeController.addCustomerSubmit
+
+GET     /registerUser               controllers.LoginController.registerUser
+POST    /registerUserSubmit         controllers.LoginController.registerUserSubmit()
+
+
+
+GET     /login                      controllers.LoginController.login
+GET     /loginSubmit                controllers.LoginController.loginSubmit
+
+
+GET     /logout                      controllers.LoginController.logout
+# An example controller showing how to use dependency injection
+GET     /count                      controllers.CountController.count
+# An example controller showing how to write asynchronous code
+GET     /message                    controllers.AsyncController.message
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

@@ -1,6 +1,14 @@
-@(items: List[models.ItemOnSale],categories: List[models.Category])
-@main("On Sale"){
+@(items: List[models.products.ItemOnSale],categories: List[models.products.Category],user: models.users.User)
+@main("On Sale",user){
     <h1>On sale here</h1>
+
+
+    @* Display successful new product message from flash, if it is set *@
+	@if(flash.containsKey("success")) {
+		<div class="alert alert-success">
+			@flash.get("success")
+		</div>
+}
     <div class="col-sm-3">
 		<h4>Categories</h4>
 	        <ul class="list-group">
@@ -21,7 +29,6 @@
         <tr>
             <th>ID</th>
             <th>Name</th>
-            <th>Category</th>
             <th>Description</th>
             <th>Stock</th>
             <th>Price</th>
@@ -35,14 +42,35 @@
                <tr>
                   <td>@i.getId</td>
                   <td>@i.getName</td>
-                  <td>@i.getCategory.getName</td>
                   <td>@i.getDescription</td>
                   <td>@i.getStock</td>
                   <td>&euro; @("%.2f".format(i.getPrice))</td>
+
+                  @if((user != null) && ("admin".equals(user.getRole()))) {
+                  <!-- Update button -->
+						<td>
+							<a href="@routes.HomeController.updateItem(i.getId)" class="button-xs btn-danger">
+								<span class="glyphicon glyphicon-pencil"></span>
+							</a>
+                        </td>
+                  <!-- Delete button -->
+						<td>
+							<a href="@routes.HomeController.deleteItem(i.getId)" class="button-xs btn-danger" onclick="return confirmDel();">
+								<span class="glyphicon glyphicon-trash"></span>
+							</a>
+                        </td>
+                  }
                </tr>
             }
         
         </tbody>
     </table>
+    @if((user != null) && ("admin".equals(user.getRole()))) {
+    <p>
+        <a href="@routes.HomeController.addItem()">
+            <button class="btn btn-primary">Add an item</button>
+        </a>
+    </p>
+    }
 </div>
  }
