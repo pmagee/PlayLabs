@@ -70,7 +70,7 @@ public class ShoppingCtrl extends Controller {
             customer.update();
         }
         // Add product to the basket and save
-        customer.getBasket().addItem(item);
+        customer.getBasket().addItemOnSale(item);
         customer.update();
         
         // Show the basket contents     

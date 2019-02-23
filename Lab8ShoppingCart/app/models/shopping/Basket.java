@@ -30,7 +30,7 @@ public class Basket extends Model {
     
     // Add item for sale to basket
     // Either update existing order item or ad a new one.
-    public void addItem(ItemOnSale item) {
+    public void addItemOnSale(ItemOnSale item) {
         
         boolean itemFound = false;
         // Check if product already in this basket
