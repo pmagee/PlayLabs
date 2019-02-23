@@ -1,0 +1,9 @@
+[0m[[0m[0mdebug[0m] [0m[0mCopy resource mappings: [0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/patricia/wdd1labs/PlayLabs/ShoppinCartLY/conf/application.conf,/home/patricia/wdd1labs/PlayLabs/ShoppinCartLY/target/scala-2.12/classes/application.conf)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/patricia/wdd1labs/PlayLabs/ShoppinCartLY/conf/logback.xml,/home/patricia/wdd1labs/PlayLabs/ShoppinCartLY/target/scala-2.12/classes/logback.xml)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/patricia/wdd1labs/PlayLabs/ShoppinCartLY/conf/routes,/home/patricia/wdd1labs/PlayLabs/ShoppinCartLY/target/scala-2.12/classes/routes)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/patricia/wdd1labs/PlayLabs/ShoppinCartLY/conf/evolutions,/home/patricia/wdd1labs/PlayLabs/ShoppinCartLY/target/scala-2.12/classes/evolutions)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/patricia/wdd1labs/PlayLabs/ShoppinCartLY/conf/evolutions/default,/home/patricia/wdd1labs/PlayLabs/ShoppinCartLY/target/scala-2.12/classes/evolutions/default)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/patricia/wdd1labs/PlayLabs/ShoppinCartLY/conf/evolutions/default/2.sql,/home/patricia/wdd1labs/PlayLabs/ShoppinCartLY/target/scala-2.12/classes/evolutions/default/2.sql)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/patricia/wdd1labs/PlayLabs/ShoppinCartLY/conf/evolutions/default/3.sql,/home/patricia/wdd1labs/PlayLabs/ShoppinCartLY/target/scala-2.12/classes/evolutions/default/3.sql)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/patricia/wdd1labs/PlayLabs/ShoppinCartLY/conf/evolutions/default/1.sql,/home/patricia/wdd1labs/PlayLabs/ShoppinCartLY/target/scala-2.12/classes/evolutions/default/1.sql)[0m

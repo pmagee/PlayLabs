@@ -1,0 +1,75 @@
+@import models.users.User
+@(title: String, user: User )(content: Html)
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Online Shop - @title</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet" />
+    <!-- Custom CSS -->
+    <link href="@routes.Assets.versioned("stylesheets/main.css")" rel="stylesheet" />
+</head>
+
+<body>
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Online Shop</a>
+            </div>
+
+            <ul class="nav navbar-nav">
+
+                <li @if(title =="Products" ){class="active"}>
+                    <a href="@routes.AdminProductCtrl.listProducts(0)">Products</a>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#">Services</a>
+                </li>
+
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+                <li @if(title=="Login"){class="active"}>
+                    @if(user != null) {
+                        <a href="@controllers.security.routes.LoginCtrl.logout()">Logout @user.getName()</a>
+                    } else {
+                        <a href="@controllers.security.routes.LoginCtrl.login()">Login</a>
+                    }
+
+                </li>
+            </ul>
+
+        </div>
+
+    </nav>
+
+    <container>
+        <row>
+            <div class="col-md-12">
+                @content
+            </div>
+        </row>
+    </container>
+<br>
+    <container>
+        <footer>
+        <row>
+            <div class="col-md-12">
+                Copyright
+                <strong>Online Shop</strong>
+            </div>
+        </row>
+    </footer>
+    </container>
+    <script src="@routes.Assets.versioned("javascripts/main.js")"></script>
+</body>
+
+</html>

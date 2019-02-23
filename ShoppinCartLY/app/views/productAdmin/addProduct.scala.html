@@ -1,0 +1,39 @@
+@import models.products.Category
+@import models.products.Product
+@import models.users.User
+@(productForm: Form[Product], user: User)
+@import helper._
+
+@main("Add Product",user) {
+    <p class="lead">Add a new product</p>
+    @form(action=routes.AdminProductCtrl.addProductSubmit(), 'class -> "form-horizontal", 'role -> "form",'enctype -> "multipart/form-data") {
+        @* CSRF attack prevention *@
+        @CSRF.formField
+        @inputText(productForm("name"), '_label -> "Name", 'class -> "form-control")
+        <!-- Checkboxes for categories - current categories for this product are checked -->
+        <!-- Category.options provides a hashmap of value, name pairs -->
+        <!-- If product (id) is in catagory - mark it as checked -->
+        <!-- Checkbox name is catSelect[],  selected values will be stored in -->
+        <!-- form object using catSelect defined in Product  -->
+        @for((value, name) <- Category.options) {
+            <input type="checkbox" name="catSelect[]" value="@value"
+            
+            />@name<br>        
+        }
+        @inputText(productForm("description"), '_label -> "Description", 'class -> "form-control")
+        @inputText(productForm("stock"), '_label -> "Stock", 'class -> "form-control")
+        @inputText(productForm("price"), '_label -> "Price", 'class -> "form-control")
+
+        @inputText(productForm("id"), '_label -> "", 'hidden -> "hidden")
+
+        <label>Image Upload</label>
+        <input class="btn-sm btn-default" type="file" name="upload">
+        <br><br>
+        <div class="actions">
+            <input type="submit" value="Add Product" class="btn btn-primary">
+            <a href="@routes.ProductCtrl.listProducts(0)">
+                <button type="button" class="btn btn-warning">Cancel</button>
+            </a>
+        </div>
+    }
+}

@@ -1,0 +1,80 @@
+
+@import models.products.Category
+@import models.products.Product
+@import models.users.User
+@(products: List[Product], categories: List[Category], user: User,env: play.api.Environment)
+
+@main("Products",user) {
+
+<p class="lead">Product Catalogue</p>
+<br>
+<div class="row">
+  <div class="col-sm-3">
+    <h4>Categories</h4>
+    <div class="list-group">
+      <a href="@routes.AdminProductCtrl.listProducts(0)" class="list-group-item">All Categories</a>
+      @for(c <- categories) {
+        <a href="@routes.AdminProductCtrl.listProducts(c.getId)" class="list-group-item">@c.getName
+          <span class="badge">@c.getProducts.size()</span>
+        </a>
+      }
+    </div>
+  </div>
+  <div class="col-sm-9">
+    <table class="table table-bordered table-hover table-condensed">
+      @if(flash.containsKey("success")) {
+        <div class="alert alert-success">
+          @flash.get("success")
+        </div>
+      }
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Stock</th>
+          <th>Price</th>
+          <th colspan="2"></th>      
+        </tr>
+      </thead>
+
+      <tbody>
+        @for(p<-products) {
+          <tr>
+              @if(env.resource("public/images/productImages/thumbnails/" + p.getId + ".jpg").isDefined) {
+                <td><img src="/assets/images/productImages/thumbnails/@(p.getId + ".jpg")"/></td>
+            } else {
+                <td><img src="/assets/images/productImages/thumbnails/noImage.jpg"/></td>
+            }
+            <td class="numeric">@p.getId</td>
+            <td><a href="@routes.ProductCtrl.productDetails(p.getId)">
+             @p.getName</td>
+            </a>
+     
+            <td>@p.getDescription</td>
+            <td  class="numeric">@p.getStock</td>
+            <td  class="numeric">€ @("%.2f".format(p.getPrice))</td>
+            <td>
+              <a href="@routes.AdminProductCtrl.updateProduct(p.getId)" class="button xs btn-danger">
+                <span class="glyphicon glyphicon-pencil"></span>
+              </a>
+            </td>        <td>
+              <a href="@routes.AdminProductCtrl.deleteProduct(p.getId)" class="button xs btn-danger" onclick="return confirmDel();">
+                <span class="glyphicon glyphicon-trash"></span>
+              </a>
+            </td>
+          </tr>
+        }
+      </tbody>
+
+    </table>
+
+    <p>
+      <a href="@routes.AdminProductCtrl.addProduct()">
+        <button class="btn btn-primary">Add a product</button>
+      </a>
+    </p>
+  </div>
+</div>
+}

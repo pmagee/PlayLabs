@@ -1,0 +1,6 @@
+[0m[[0m[33mwarn[0m] [0m[0m/home/patricia/wdd1labs/PlayLabs/ShoppinCartLY/app/views/login.scala.html:12:28: method globalError in class Form is deprecated: see corresponding Javadoc for more information.[0m
+[0m[[0m[33mwarn[0m] [0m[0m                @loginForm.globalError.message;[0m
+[0m[[0m[33mwarn[0m] [0m[0m                           ^[0m
+[0m[[0m[33mwarn[0m] [0m[0mone warning found[0m
+[0m[[0m[0minfo[0m] [0m[0m/home/patricia/wdd1labs/PlayLabs/ShoppinCartLY/app/controllers/AdminProductCtrl.java: Some input files use unchecked or unsafe operations.[0m
+[0m[[0m[0minfo[0m] [0m[0m/home/patricia/wdd1labs/PlayLabs/ShoppinCartLY/app/controllers/AdminProductCtrl.java: Recompile with -Xlint:unchecked for details.[0m
