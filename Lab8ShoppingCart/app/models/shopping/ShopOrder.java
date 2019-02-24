@@ -19,7 +19,7 @@ public class ShopOrder extends Model {
     @Id
     private Long id;
     
-    private Date OrderDate;
+    private Date orderDate;
     
     // Order contains may items.
     // mappedBy makes this side of the mapping the owner
@@ -63,11 +63,11 @@ public class ShopOrder extends Model {
     }
 
     public Date getOrderDate() {
-        return OrderDate;
+        return orderDate;
     }
 
     public void setOrderDate(Date orderDate) {
-        OrderDate = orderDate;
+        orderDate = orderDate;
     }
 
     public List<OrderItem> getItems() {
