@@ -92,9 +92,9 @@ public Result addItemSubmit() {
             newItem.update();
         }
         // We extract the multipart form data from the request.
-        MultipartFormData data = request().body().asMultipartFormData();
+        MultipartFormData<File> data = request().body().asMultipartFormData();
         // Then we extract the particular file associated with the field named "upload".
-        FilePart image = data.getFile("upload");
+        FilePart<File> image = data.getFile("upload");
         // Finally, we save the image, using method saveFile(). We do not store the
         // binary content of the image in the database, as this would be inefficient due
         // to encoding and decoding overhead. 
