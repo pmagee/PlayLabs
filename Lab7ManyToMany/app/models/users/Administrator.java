@@ -17,8 +17,9 @@ public class Administrator extends User {
     public Administrator(){
 
     }
-    public Administrator(String email, String name,String role, String password) {
-        super(email, name, role,password);
+    public Administrator(String email, String name,
+    String role, String password,Date dateOfBirth) {
+        super(email, name, role,password,dateOfBirth);
     }
 
     public static final Finder<Long, Administrator> find = new Finder<>(Administrator.class);

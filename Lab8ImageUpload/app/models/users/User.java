@@ -73,6 +73,14 @@ public class User extends Model {
         this.password = password;
     }
 
+    public User(String email, String name, String role, String password,Date dateOfBirth) {
+        this.email = email;
+        this.name = name;
+        this.role = role;
+        this.password = password;
+        this.dateOfBirth = dateOfBirth;
+    }
+
     public String getEmail() {
         return email;
     }
