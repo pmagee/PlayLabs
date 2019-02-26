@@ -33,7 +33,7 @@ public class ShopOrder extends Model {
 
     // Default constructor
     public  ShopOrder() {
-        OrderDate = new Date();
+        orderDate = new Date();
     }
     
     public double getOrderTotal() {

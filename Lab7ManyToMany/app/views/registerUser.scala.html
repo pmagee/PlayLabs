@@ -1,4 +1,4 @@
-@(regForm: Form[models.users.UserPassword2],user: models.users.User)
+@(userForm: Form[models.users.UserPassword2],user: models.users.User)
 
 @import helper._
 
@@ -20,14 +20,21 @@
         @* This token, sent by the controller, will be used to authenticate the form submission *@
         @CSRF.formField
 
-
-            @inputText(regForm("email"), '_label -> "Email", 'class -> "form-control")
-            @inputText(regForm("name"), '_label -> "Name", 'class -> "form-control")
-            @inputText(regForm("password"), '_label -> "Password", 'class -> "form-control")
-            @inputText(regForm("password2"), '_label -> "Confirm Password", 'class -> "form-control")
+        <!-- Use helper methods to add fields to the form -->
+        <!-- Note that the form fields are related to the fields of the itemForm object -->
+        <!-- Note the arguments that are being passed to the scala function inputText (they are 
+             essentially instructions for constructing an HTML input element)-->
+        <!-- Note the @select function's argument options. This needs to be a map of ids-to-names
+             and this is provided by the method Category.options(), which we added to the Category
+             class in the previous step. -->
+            @inputText(userForm("email"), '_label -> "Email", 'class -> "form-control")      
+            @inputDate(userForm("dateOfBirth"), args = 'size -> 10, '_label -> "Date Of Birth", 'class -> "form-control")
+            @inputText(userForm("name"), '_label -> "Name", 'class -> "form-control")
+            @inputText(userForm("password"), '_label -> "Password", 'class -> "form-control")
+            @inputText(userForm("password2"), '_label -> "Confirm Password", 'class -> "form-control")
             
-            @inputText(regForm("role").copy(value=Some("customer")), '_label -> "",'hidden -> "hidden")
-            @inputText(regForm("email"), '_label -> "", 'hidden -> "hidden")
+            @inputText(userForm("role").copy(value=Some("customer")), '_label -> "",'hidden -> "hidden")
+            @inputText(userForm("email"), '_label -> "", 'hidden -> "hidden")
             
             <!-- We use the bootstrap actions class for the buttons at the bottom:
                 1. The submit button for the form

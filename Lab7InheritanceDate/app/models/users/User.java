@@ -52,16 +52,6 @@ public class User extends Model {
         }
     }
 
-    // public static Map<String,String> options() {
-    //     LinkedHashMap<String,String> options = new LinkedHashMap<>();
-     
-    //     // Get all the categories from the database and add them to the options hash map
-    //     for (User u: User.findAll()) {
-    //        options.put(u.getEmail(), u.getRole());
-    //     }
-    //     return options;
-    //  }
-
     public User() {
 
     }
@@ -71,6 +61,14 @@ public class User extends Model {
         this.name = name;
         this.role = role;
         this.password = password;
+    }
+
+    public User(String email, String name, String role, String password, Date dateOfBirth) {
+        this.email = email;
+        this.name = name;
+        this.role = role;
+        this.password = password;
+        this.dateOfBirth = dateOfBirth;
     }
 
     public String getEmail() {

@@ -21,8 +21,9 @@
         @CSRF.formField
 
 
-            @inputText(regForm("email"), '_label -> "Email", 'class -> "form-control")
+            @inputText(regForm("email"), '_label -> "Email", 'class -> "form-control")       
             @inputText(regForm("name"), '_label -> "Name", 'class -> "form-control")
+            @inputDate(regForm("dateOfBirth"), args = 'size -> 10, '_label -> "Date Of Birth", 'class -> "form-control")
             @inputText(regForm("password"), '_label -> "Password", 'class -> "form-control")
             @inputText(regForm("password2"), '_label -> "Confirm Password", 'class -> "form-control")
             

@@ -25,9 +25,7 @@ public class User extends Model {
     private Date dateOfBirth;
 
     @Constraints.Required
-    private String name;
-
-    
+    private String name;   
     
     @Constraints.Required
     private String password;
