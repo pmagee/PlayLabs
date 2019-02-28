@@ -102,4 +102,7 @@ public boolean decrementStock(){
 public void incrementStock(){
     stock +=1;
 }
+public void incrementStock(int q){
+    stock +=q;
+}
 }
