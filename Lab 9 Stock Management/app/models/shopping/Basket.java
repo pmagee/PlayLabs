@@ -117,10 +117,7 @@ public class Basket extends Model {
                     // remove object from list
                     iter.remove();
                     break;
-                }   
-                System.out.println("Inside If");
-                
-                
+                }      
             }
        }
     }
