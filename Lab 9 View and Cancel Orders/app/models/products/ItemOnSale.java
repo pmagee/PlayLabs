@@ -90,13 +90,8 @@ public void setCatSelect(List<Long> catSelect) {
     this.catSelect = catSelect;
 }
 
-public boolean decrementStock(){
-    boolean enough=false;
-    if(stock>0){
-        stock --;
-        enough = true;
-    }    
-    return enough;
+public void decrementStock(){
+   stock -=1;
 }
 
 public void incrementStock(){

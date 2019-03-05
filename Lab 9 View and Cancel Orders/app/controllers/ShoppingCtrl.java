@@ -123,14 +123,15 @@ public class ShoppingCtrl extends Controller {
 
         ItemOnSale ios = ItemOnSale.find.byId(pid);
 
-        if(ios.decrementStock()){
+        if(ios.getStock()>0){
         // Increment quantity
         item.increaseQty();
         // Save
         item.update();
+        ios.decrementStock();
         ios.update();
         }else{
-            flash("success","Sorry, no more of these items left");
+            flash("error","Sorry, no more of these items left");
         }
         // Show updated basket
         return redirect(routes.ShoppingCtrl.showBasket());
