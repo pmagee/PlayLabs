@@ -22,7 +22,8 @@
         <!-- Note the @select function's argument options. This needs to be a map of ids-to-names
              and this is provided by the method Category.options(), which we added to the Category
              class in the previous step. -->
-            @inputText(itemForm("name"), '_label -> "Name", 'class -> "form-control")
+           
+             @inputText(itemForm("name"), '_label -> "Name", 'class -> "form-control")
             <p><strong>Categories</strong></p>
             @for((value, name) <- products.Category.options) {
                 <input type="checkbox" name="catSelect[]" value="@value"  
